@@ -6,44 +6,42 @@
         <groupId>com.pedmn.mnagentpipeline2</groupId>
         <artifactId>mnagentpipeline2-parent</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../pom.xml</relativePath> <!-- lookup parent from repository -->
+        <relativePath>../../../pom.xml</relativePath>
     </parent>
-    <artifactId>mnagentpipeline2-bootstrap</artifactId>
-    <name>bootstrap</name>
-    <description>bootstrap</description>
+    <artifactId>mnagentpipeline2-core-service</artifactId>
+    <name>core-service</name>
+    <description>Core domain services and repositories.</description>
+
     <properties>
         <java.version>17</java.version>
     </properties>
+
     <dependencies>
         <dependency>
             <groupId>com.pedmn.mnagentpipeline2</groupId>
-            <artifactId>mnagentpipeline2-controller</artifactId>
+            <artifactId>mnagentpipeline2-core-model</artifactId>
         </dependency>
 
         <dependency>
             <groupId>com.pedmn.mnagentpipeline2</groupId>
-            <artifactId>mnagentpipeline2-core-service</artifactId>
+            <artifactId>mnagentpipeline2-common-dal</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <groupId>com.pedmn.mnagentpipeline2</groupId>
+            <artifactId>mnagentpipeline2-common-service-util</artifactId>
         </dependency>
+
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
         </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
 
 </project>

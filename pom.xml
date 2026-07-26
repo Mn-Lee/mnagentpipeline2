@@ -16,33 +16,104 @@
     <description>mnagentpipeline2</description>
 
     <modules>
+        <module>app/common/service/integration</module>
+        <module>app/common/service/facade</module>
+        <module>app/common/service/util</module>
+        <module>app/common/dal</module>
+        <module>app/core/model</module>
+        <module>app/core/service</module>
+        <module>app/controller</module>
         <module>app/bootstrap</module>
     </modules>
 
     <properties>
         <java.version>17</java.version>
+        <common-service-facade.version>1.0.0.20260726</common-service-facade.version>
     </properties>
-    <dependencies>
-        <dependency>
-            <groupId>com.pedmn.mnagentpipeline2</groupId>
-            <artifactId>mnagentpipeline2-bootstrap</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
+    <!-- 统一在 parent 管理版本：子 module 引用依赖时不写 version，版本从这里取。
+         注意是 dependencyManagement（只声明版本、不引入 jar），不是 dependencies，
+         否则会被子 module 继承导致自引用。spring-boot 相关版本由 spring-boot-starter-parent 管。 -->
+    <dependencyManagement>
+        <dependencies>
+            <!-- 项目内部 module -->
+            <dependency>
+                <groupId>com.pedmn.mnagentpipeline2</groupId>
+                <artifactId>mnagentpipeline2-common-service-integration</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.pedmn.mnagentpipeline2</groupId>
+                <artifactId>mnagentpipeline2-common-service-facade</artifactId>
+                <version>${common-service-facade.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.pedmn.mnagentpipeline2</groupId>
+                <artifactId>mnagentpipeline2-common-service-util</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.pedmn.mnagentpipeline2</groupId>
+                <artifactId>mnagentpipeline2-common-dal</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.pedmn.mnagentpipeline2</groupId>
+                <artifactId>mnagentpipeline2-core-model</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.pedmn.mnagentpipeline2</groupId>
+                <artifactId>mnagentpipeline2-core-service</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.pedmn.mnagentpipeline2</groupId>
+                <artifactId>mnagentpipeline2-controller</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+
+            <!-- spring cloud-->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>2025.1.0.0</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>1.18.46</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>4.0.0</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-lang</groupId>
+                <artifactId>commons-lang</artifactId>
+                <version>2.4</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct</artifactId>
+                <version>1.6.3</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct-processor</artifactId>
+                <version>1.6.3</version>
+            </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok-mapstruct-binding</artifactId>
+                <version>0.2.0</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <build>
         <plugins>
