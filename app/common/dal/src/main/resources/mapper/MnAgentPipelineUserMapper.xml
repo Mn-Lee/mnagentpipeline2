@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pedmn.mnagentpipeline2.common.dal.dao.MnAgentPipelineUserDao">
+
+    <resultMap id="MnAgentPipelineUserResultMap"
+               type="com.pedmn.mnagentpipeline2.common.dal.dataobject.MnAgentPipelineUserDO">
+        <id column="id" property="id"/>
+        <result column="user_id" property="userId"/>
+        <result column="nick_name" property="nickName"/>
+        <result column="password" property="password"/>
+        <result column="email" property="email"/>
+        <result column="biz_data" property="bizData"/>
+        <result column="gmt_create" property="gmtCreate"/>
+        <result column="gmt_modified" property="gmtModified"/>
+        <result column="is_deleted" property="isDeleted"/>
+    </resultMap>
+
+    <sql id="BaseColumns">
+        id, user_id, nick_name, password, email, biz_data, gmt_create, gmt_modified, is_deleted
+    </sql>
+
+    <insert id="insert" parameterType="com.pedmn.mnagentpipeline2.common.dal.dataobject.MnAgentPipelineUserDO"
+            useGeneratedKeys="true" keyProperty="id">
+        insert into mnagentpipeline_user (
+            user_id,
+            nick_name,
+            password,
+            email,
+            biz_data,
+            gmt_create,
+            gmt_modified,
+            is_deleted
+        ) values (
+            #{userId},
+            #{nickName},
+            #{password},
+            #{email},
+            #{bizData},
+            now(),
+            now(),
+            'N'
+        )
+    </insert>
+
+    <update id="update" parameterType="com.pedmn.mnagentpipeline2.common.dal.dataobject.MnAgentPipelineUserDO">
+        update mnagentpipeline_user
+        set
+            nick_name = #{nickName},
+            password = #{password},
+            email = #{email},
+            biz_data = #{bizData},
+            gmt_modified = now()
+        where user_id = #{userId}
+          and is_deleted = 'N'
+    </update>
+
+    <select id="findByKey" resultMap="MnAgentPipelineUserResultMap">
+        select
+        <include refid="BaseColumns"/>
+        from mnagentpipeline_user
+        where user_id = #{userId}
+          and is_deleted = 'N'
+    </select>
+
+    <select id="lockByUserId" resultMap="MnAgentPipelineUserResultMap">
+        select
+        <include refid="BaseColumns"/>
+        from mnagentpipeline_user
+        where user_id = #{userId}
+          and is_deleted = 'N'
+        for update
+    </select>
+
+    <select id="lockByEmail" resultMap="MnAgentPipelineUserResultMap">
+        select
+        <include refid="BaseColumns"/>
+        from mnagentpipeline_user
+        where email = #{email}
+          and is_deleted = 'N'
+        for update
+    </select>
+
+    <update id="delete">
+        update mnagentpipeline_user
+        set
+            is_deleted = unix_timestamp(now()),
+            gmt_modified = now()
+        where user_id = #{userId}
+          and is_deleted = 'N'
+    </update>
+
+</mapper>
