@@ -64,6 +64,14 @@
           and is_deleted = 'N'
     </select>
 
+    <select id="findByEmail" resultMap="MnAgentPipelineUserResultMap">
+        select
+        <include refid="BaseColumns"/>
+        from mnagentpipeline_user
+        where email = #{email}
+          and is_deleted = 'N'
+    </select>
+
     <select id="lockByUserId" resultMap="MnAgentPipelineUserResultMap">
         select
         <include refid="BaseColumns"/>

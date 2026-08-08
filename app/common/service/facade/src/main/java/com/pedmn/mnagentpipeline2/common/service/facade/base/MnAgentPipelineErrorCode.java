@@ -5,41 +5,21 @@ import lombok.Getter;
 @Getter
 public enum MnAgentPipelineErrorCode {
 
-    // ============================= 系统错误【001-199】==================================
+    SYSTEM_ERROR(ErrorTypes.SYSTEM, "001", "System error"),
 
-    /**
-     * 系统异常
-     */
-    SYSTEM_ERROR(ErrorTypes.SYSTEM, "001", "系统异常"),
+    INTEGRATION_ERROR(ErrorTypes.SYSTEM, "002", "Integration error"),
 
-    /**
-     * 系统集成异常
-     */
-    INTEGRATION_ERROR(ErrorTypes.SYSTEM, "002", "系统集成异常"),
+    DB_ERROR(ErrorTypes.SYSTEM, "003", "Database error"),
 
-    /**
-     * DB异常
-     */
-    DB_ERROR(ErrorTypes.SYSTEM, "003", "DB异常"),
+    ILLEGAL_ARGUMENT(ErrorTypes.BIZ, "201", "Illegal argument"),
 
-    // ============================= 义务错误【201-999】==================================
+    USER_EMAIL_EXIST(ErrorTypes.BIZ, "202", "User email already exists"),
 
-    /**
-     * 参数错误
-     */
-    ILLEGAL_ARGUMENT(ErrorTypes.BIZ, "201", "参数错误"),
+    USER_NOT_EXIST(ErrorTypes.BIZ, "203", "User does not exist"),
 
-    /**
-     * 用户email已存在
-     */
-    USER_EMAIL_EXIST(ErrorTypes.BIZ, "202", "用户email已存在"),
+    USER_PASSWORD_ERROR(ErrorTypes.BIZ, "204", "User password is incorrect"),
 
-    /**
-     * 用户不存在
-     */
-    USER_NOT_EXIST(ErrorTypes.BIZ, "203", "用户不存在"),
-
-    ;
+    USER_NOT_LOGIN(ErrorTypes.BIZ, "205", "User is not logged in");
 
     private static final String CODE_PREFIX = "AP1";
 
