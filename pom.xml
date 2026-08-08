@@ -22,6 +22,7 @@
         <module>app/common/dal</module>
         <module>app/core/model</module>
         <module>app/core/service</module>
+        <module>app/biz/service/impl</module>
         <module>app/controller</module>
         <module>app/bootstrap</module>
     </modules>
@@ -65,6 +66,11 @@
             <dependency>
                 <groupId>com.pedmn.mnagentpipeline2</groupId>
                 <artifactId>mnagentpipeline2-core-service</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.pedmn.mnagentpipeline2</groupId>
+                <artifactId>mnagentpipeline2-biz-service-impl</artifactId>
                 <version>0.0.1-SNAPSHOT</version>
             </dependency>
             <dependency>

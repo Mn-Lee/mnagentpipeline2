@@ -53,6 +53,12 @@ public class MnAgentPipelineUserRepositoryImpl implements MnAgentPipelineUserRep
     }
 
     @Override
+    public MnAgentPipelineUser findByEmail(String email) {
+        MnAgentPipelineUserDO userDO = mnAgentPipelineUserDao.findByEmail(email, NOT_DELETED);
+        return MnAgentPipelineUserConverter.INSTANCE.toModel(userDO);
+    }
+
+    @Override
     @Transactional(rollbackFor = Exception.class)
     public int delete(String userId) {
         MnAgentPipelineUserDO existDO = mnAgentPipelineUserDao.lockByUserId(userId);

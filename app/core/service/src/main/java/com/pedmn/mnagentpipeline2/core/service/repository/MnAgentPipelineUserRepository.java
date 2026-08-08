@@ -10,5 +10,7 @@ public interface MnAgentPipelineUserRepository {
 
     MnAgentPipelineUser findByUserId(String userId);
 
+    MnAgentPipelineUser findByEmail(String email);
+
     int delete(String userId);
 }

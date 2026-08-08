@@ -13,6 +13,8 @@ public interface MnAgentPipelineUserDao {
 
     MnAgentPipelineUserDO findByKey(@Param("userId") String userId, @Param("isDeleted") String isDeleted);
 
+    MnAgentPipelineUserDO findByEmail(@Param("email") String email, @Param("isDeleted") String isDeleted);
+
     MnAgentPipelineUserDO lockByUserId(@Param("userId") String userId);
 
     MnAgentPipelineUserDO lockByEmail(@Param("email") String email);
