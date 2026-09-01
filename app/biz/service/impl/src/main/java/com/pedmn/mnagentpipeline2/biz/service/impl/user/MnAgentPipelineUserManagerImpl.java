@@ -17,7 +17,6 @@ import jakarta.annotation.Resource;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Duration;
 import java.util.UUID;
@@ -25,7 +24,7 @@ import java.util.UUID;
 @Service
 public class MnAgentPipelineUserManagerImpl implements MnAgentPipelineUserManager {
 
-    private static final String LOGIN_TOKEN_KEY_PREFIX = "mnagentpipeline:login:token:";
+    private static final String LOGIN_TOKEN_KEY_PREFIX = "mnagentpipeline_login_token_";
 
     private static final Duration LOGIN_TOKEN_TTL = Duration.ofDays(3);
 

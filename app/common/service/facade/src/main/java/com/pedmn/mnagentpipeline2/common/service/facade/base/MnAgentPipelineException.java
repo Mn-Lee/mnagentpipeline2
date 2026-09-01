@@ -7,8 +7,6 @@ import lombok.Setter;
 @Setter
 public class MnAgentPipelineException extends RuntimeException {
 
-    private static final long serialVersionUID = 1145302714797897106L;
-
     /**
      * 错误码
      */

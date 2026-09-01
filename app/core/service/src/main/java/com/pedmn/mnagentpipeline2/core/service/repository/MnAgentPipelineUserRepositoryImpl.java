@@ -15,8 +15,6 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class MnAgentPipelineUserRepositoryImpl implements MnAgentPipelineUserRepository {
 
-    private static final String NOT_DELETED = "N";
-
     @Resource
     private MnAgentPipelineUserDao mnAgentPipelineUserDao;
 
@@ -48,13 +46,13 @@ public class MnAgentPipelineUserRepositoryImpl implements MnAgentPipelineUserRep
 
     @Override
     public MnAgentPipelineUser findByUserId(String userId) {
-        MnAgentPipelineUserDO userDO = mnAgentPipelineUserDao.findByKey(userId, NOT_DELETED);
+        MnAgentPipelineUserDO userDO = mnAgentPipelineUserDao.findByKey(userId);
         return MnAgentPipelineUserConverter.INSTANCE.toModel(userDO);
     }
 
     @Override
     public MnAgentPipelineUser findByEmail(String email) {
-        MnAgentPipelineUserDO userDO = mnAgentPipelineUserDao.findByEmail(email, NOT_DELETED);
+        MnAgentPipelineUserDO userDO = mnAgentPipelineUserDao.findByEmail(email);
         return MnAgentPipelineUserConverter.INSTANCE.toModel(userDO);
     }
 

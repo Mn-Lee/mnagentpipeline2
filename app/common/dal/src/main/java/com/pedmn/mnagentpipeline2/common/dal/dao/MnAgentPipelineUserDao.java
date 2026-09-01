@@ -11,9 +11,9 @@ public interface MnAgentPipelineUserDao {
 
     int update(MnAgentPipelineUserDO user);
 
-    MnAgentPipelineUserDO findByKey(@Param("userId") String userId, @Param("isDeleted") String isDeleted);
+    MnAgentPipelineUserDO findByKey(@Param("userId") String userId);
 
-    MnAgentPipelineUserDO findByEmail(@Param("email") String email, @Param("isDeleted") String isDeleted);
+    MnAgentPipelineUserDO findByEmail(@Param("email") String email);
 
     MnAgentPipelineUserDO lockByUserId(@Param("userId") String userId);
 
