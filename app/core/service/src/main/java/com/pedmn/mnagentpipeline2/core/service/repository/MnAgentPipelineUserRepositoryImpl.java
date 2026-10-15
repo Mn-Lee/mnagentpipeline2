@@ -1,6 +1,6 @@
 package com.pedmn.mnagentpipeline2.core.service.repository;
 
-import com.pedmn.mnagentpipeline2.common.dal.dao.MnAgentPipelineUserDao;
+import com.pedmn.mnagentpipeline2.common.dal.dao.mysql.MnAgentPipelineUserDao;
 import com.pedmn.mnagentpipeline2.common.dal.dataobject.MnAgentPipelineUserDO;
 import com.pedmn.mnagentpipeline2.common.dal.enums.MnAgentTableEnum;
 import com.pedmn.mnagentpipeline2.common.service.facade.base.MnAgentPipelineErrorCode;
@@ -14,8 +14,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class MnAgentPipelineUserRepositoryImpl implements MnAgentPipelineUserRepository {
-
-    private static final String NOT_DELETED = "N";
 
     @Resource
     private MnAgentPipelineUserDao mnAgentPipelineUserDao;
@@ -48,13 +46,13 @@ public class MnAgentPipelineUserRepositoryImpl implements MnAgentPipelineUserRep
 
     @Override
     public MnAgentPipelineUser findByUserId(String userId) {
-        MnAgentPipelineUserDO userDO = mnAgentPipelineUserDao.findByKey(userId, NOT_DELETED);
+        MnAgentPipelineUserDO userDO = mnAgentPipelineUserDao.findByKey(userId);
         return MnAgentPipelineUserConverter.INSTANCE.toModel(userDO);
     }
 
     @Override
     public MnAgentPipelineUser findByEmail(String email) {
-        MnAgentPipelineUserDO userDO = mnAgentPipelineUserDao.findByEmail(email, NOT_DELETED);
+        MnAgentPipelineUserDO userDO = mnAgentPipelineUserDao.findByEmail(email);
         return MnAgentPipelineUserConverter.INSTANCE.toModel(userDO);
     }
 
