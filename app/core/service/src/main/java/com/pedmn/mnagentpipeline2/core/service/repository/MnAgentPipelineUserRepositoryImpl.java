@@ -1,6 +1,6 @@
 package com.pedmn.mnagentpipeline2.core.service.repository;
 
-import com.pedmn.mnagentpipeline2.common.dal.dao.MnAgentPipelineUserDao;
+import com.pedmn.mnagentpipeline2.common.dal.dao.mysql.MnAgentPipelineUserDao;
 import com.pedmn.mnagentpipeline2.common.dal.dataobject.MnAgentPipelineUserDO;
 import com.pedmn.mnagentpipeline2.common.dal.enums.MnAgentTableEnum;
 import com.pedmn.mnagentpipeline2.common.service.facade.base.MnAgentPipelineErrorCode;

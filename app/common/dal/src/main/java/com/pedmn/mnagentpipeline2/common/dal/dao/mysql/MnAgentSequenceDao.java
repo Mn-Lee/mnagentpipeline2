@@ -1,4 +1,4 @@
-package com.pedmn.mnagentpipeline2.common.dal.dao;
+package com.pedmn.mnagentpipeline2.common.dal.dao.mysql;
 
 import com.pedmn.mnagentpipeline2.common.dal.dataobject.MnAgentSequenceDO;
 import org.apache.ibatis.annotations.Mapper;

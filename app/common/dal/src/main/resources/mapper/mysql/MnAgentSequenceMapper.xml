@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.pedmn.mnagentpipeline2.common.dal.dao.MnAgentSequenceDao">
+<mapper namespace="com.pedmn.mnagentpipeline2.common.dal.dao.mysql.MnAgentSequenceDao">
 
     <resultMap id="MnAgentSequenceResultMap"
                type="com.pedmn.mnagentpipeline2.common.dal.dataobject.MnAgentSequenceDO">
@@ -15,43 +15,24 @@
     </resultMap>
 
     <select id="lockBySequenceName" resultMap="MnAgentSequenceResultMap">
-        select
-            id,
-            sequence_name,
-            current_value,
-            gmt_create,
-            gmt_modified,
-            is_deleted
+        select id, sequence_name, current_value, gmt_create, gmt_modified, is_deleted
         from mnagentpipeline_sequence
-        where sequence_name = #{sequenceName}
-          and is_deleted = 'N'
-        for update
+        where sequence_name = #{sequenceName} and is_deleted = 'N' for update
     </select>
 
     <insert id="insert" parameterType="com.pedmn.mnagentpipeline2.common.dal.dataobject.MnAgentSequenceDO"
             useGeneratedKeys="true" keyProperty="id">
         insert ignore into mnagentpipeline_sequence (
-            sequence_name,
-            current_value,
-            gmt_create,
-            gmt_modified,
-            is_deleted
+            sequence_name, current_value, gmt_create, gmt_modified, is_deleted
         ) values (
-            #{sequenceName},
-            #{currentValue},
-            now(),
-            now(),
-            'N'
+            #{sequenceName}, #{currentValue}, now(), now(), 'N'
         )
     </insert>
 
     <update id="updateCurrentValue">
         update mnagentpipeline_sequence
-        set
-            current_value = #{currentValue},
-            gmt_modified = now()
-        where sequence_name = #{sequenceName}
-          and is_deleted = 'N'
+        set current_value = #{currentValue}, gmt_modified = now()
+        where sequence_name = #{sequenceName} and is_deleted = 'N'
     </update>
 
 </mapper>

@@ -1,6 +1,6 @@
 package com.pedmn.mnagentpipeline2.core.service.sequence;
 
-import com.pedmn.mnagentpipeline2.common.dal.dao.MnAgentSequenceDao;
+import com.pedmn.mnagentpipeline2.common.dal.dao.mysql.MnAgentSequenceDao;
 import com.pedmn.mnagentpipeline2.common.dal.dataobject.MnAgentSequenceDO;
 import com.pedmn.mnagentpipeline2.common.dal.enums.MnAgentTableEnum;
 import jakarta.annotation.Resource;
